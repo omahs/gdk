@@ -412,13 +412,13 @@ Describes a users transaction history returned by `GA_get_transactions`.
     in, or ``0`` if the transaction is in the mempool.
 :can_cpfp: A boolean indicating whether the user can CPFP the transaction.
 :can_rbf: A boolean indicating whether the use can RBF (bump) the transaction fee.
-:created_at_ts: The timestamp in microseconds ffrom the Unix epoc when the transaction
+:created_at_ts: The timestamp in microseconds from the Unix epoc when the transaction
     was seen by gdk or Green servers, or included in a block.
 :fee: The BTC or L-BTC network fee paid by the transaction in satoshi.
 :fee_rate: The fee rate in satoshi per thousand bytes.
-:inputs: See :ref:`tx-list-inputs`.
+:inputs: See :ref:`tx-list-input`.
 :memo: The users memo, if previously set by `GA_set_transaction_memo`.
-:outputs: See :ref:`tx-list-outputs`.
+:outputs: See :ref:`tx-list-output`.
 :rbf_optin: A boolean indicating whether the transaction is RBF-enabled.
 :satoshi: A map of asset names to the signed satoshi total for that asset in the
     transaction. Negative numbers represent outgoing amounts, positive incoming.
@@ -923,6 +923,31 @@ Send transaction JSON
     ]
   }
   }
+
+.. _create-swap-tx-details:
+
+Create swap transaction JSON
+----------------------------
+
+Describes the swap to be created when calling `GA_create_swap_transaction`.
+
+.. code-block:: json
+
+  {
+    "swap_type": "liquidex",
+    "output_type": "liquidex_v0",
+    "receive": {
+      "asset_id": ASSET_ID,
+      "satoshi": 1
+    }
+    "send": {},
+  }
+
+:swap_type: Pass ``"liquidex"`` to create the makers side of a LiquiDEX 2-step swap.
+:output_type: Pass ``"liquidex_v0"`` to return LiquiDEX proposal JSON version 0.
+:receive/asset_id: The hex-encoded asset id to receive, in display format.
+:receive/satoshi: The satoshi amount of the specified asset to receive.
+:send: The makers UTXO to swap, as returned from `GA_get_unspent_outputs`.
 
 
 .. _sign-psbt-details:
