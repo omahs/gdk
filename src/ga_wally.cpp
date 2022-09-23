@@ -703,6 +703,13 @@ namespace sdk {
         return wally_ec_scalar_verify(scalar.data(), scalar.size()) == WALLY_OK;
     }
 
+    std::vector<unsigned char> ec_scalar_add(byte_span_t a, byte_span_t b)
+    {
+        std::vector<unsigned char> ret(EC_SCALAR_LEN);
+        GDK_VERIFY(wally_ec_scalar_add(a.data(), a.size(), b.data(), b.size(), ret.data(), ret.size()));
+        return ret;
+    }
+
     //
     // Elements
     //

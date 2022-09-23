@@ -278,6 +278,8 @@ namespace sdk {
 
     bool ec_scalar_verify(byte_span_t scalar);
 
+    std::vector<unsigned char> ec_scalar_add(byte_span_t a, byte_span_t b);
+
     //
     // Elements
     //
