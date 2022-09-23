@@ -276,6 +276,8 @@ namespace sdk {
     bool ae_verify(byte_span_t public_key, byte_span_t message_hash, byte_span_t host_entropy,
         byte_span_t signer_commitment, byte_span_t sig, uint32_t flags = EC_FLAG_ECDSA);
 
+    bool ec_scalar_verify(byte_span_t scalar);
+
     //
     // Elements
     //

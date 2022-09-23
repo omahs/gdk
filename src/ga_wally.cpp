@@ -698,6 +698,11 @@ namespace sdk {
             == WALLY_OK;
     }
 
+    bool ec_scalar_verify(byte_span_t scalar)
+    {
+        return wally_ec_scalar_verify(scalar.data(), scalar.size()) == WALLY_OK;
+    }
+
     //
     // Elements
     //
