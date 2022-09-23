@@ -710,6 +710,13 @@ namespace sdk {
         return ret;
     }
 
+    std::vector<unsigned char> ec_scalar_subtract(byte_span_t a, byte_span_t b)
+    {
+        std::vector<unsigned char> ret(EC_SCALAR_LEN);
+        GDK_VERIFY(wally_ec_scalar_subtract(a.data(), a.size(), b.data(), b.size(), ret.data(), ret.size()));
+        return ret;
+    }
+
     //
     // Elements
     //

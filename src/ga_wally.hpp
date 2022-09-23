@@ -280,6 +280,8 @@ namespace sdk {
 
     std::vector<unsigned char> ec_scalar_add(byte_span_t a, byte_span_t b);
 
+    std::vector<unsigned char> ec_scalar_subtract(byte_span_t a, byte_span_t b);
+
     //
     // Elements
     //
