@@ -737,6 +737,14 @@ namespace sdk {
         return v;
     }
 
+    std::vector<unsigned char> asset_scalar_offset(uint64_t value, byte_span_t abf, byte_span_t vbf)
+    {
+        std::vector<unsigned char> ret(EC_SCALAR_LEN);
+        GDK_VERIFY(
+            wally_asset_scalar_offset(value, abf.data(), abf.size(), vbf.data(), vbf.size(), ret.data(), ret.size()));
+        return ret;
+    }
+
     std::array<unsigned char, ASSET_COMMITMENT_LEN> asset_value_commitment(
         uint64_t value, byte_span_t vbf, byte_span_t generator)
     {

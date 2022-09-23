@@ -290,6 +290,8 @@ namespace sdk {
     std::array<unsigned char, ASSET_TAG_LEN> asset_final_vbf(
         uint64_span_t values, size_t num_inputs, byte_span_t abf, byte_span_t vbf);
 
+    std::vector<unsigned char> asset_scalar_offset(uint64_t value, byte_span_t abf, byte_span_t vbf);
+
     std::array<unsigned char, ASSET_COMMITMENT_LEN> asset_value_commitment(
         uint64_t value, byte_span_t vbf, byte_span_t generator);
 
