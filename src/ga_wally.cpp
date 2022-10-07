@@ -780,6 +780,14 @@ namespace sdk {
         return rangeproof;
     }
 
+    bool explicit_rangeproof_verify(
+        byte_span_t rangeproof, uint64_t value, byte_span_t commitment, byte_span_t generator)
+    {
+        return wally_explicit_rangeproof_verify(rangeproof.data(), rangeproof.size(), value, commitment.data(),
+                   commitment.size(), generator.data(), generator.size())
+            == WALLY_OK;
+    }
+
     size_t asset_surjectionproof_size(size_t num_inputs)
     {
         size_t written;

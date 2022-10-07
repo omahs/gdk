@@ -302,6 +302,9 @@ namespace sdk {
     std::vector<unsigned char> explicit_rangeproof(
         uint64_t value, byte_span_t nonce_hash, byte_span_t vbf, byte_span_t commitment, byte_span_t generator);
 
+    bool explicit_rangeproof_verify(
+        byte_span_t rangeproof, uint64_t value, byte_span_t commitment, byte_span_t generator);
+
     size_t asset_surjectionproof_size(size_t num_inputs);
 
     std::vector<unsigned char> asset_surjectionproof(byte_span_t output_asset, byte_span_t output_abf,
