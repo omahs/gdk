@@ -768,6 +768,18 @@ namespace sdk {
         return rangeproof;
     }
 
+    std::vector<unsigned char> explicit_rangeproof(
+        uint64_t value, byte_span_t nonce_hash, byte_span_t vbf, byte_span_t commitment, byte_span_t generator)
+    {
+        std::vector<unsigned char> rangeproof(ASSET_EXPLICIT_RANGEPROOF_MAX_LEN);
+        size_t written;
+        GDK_VERIFY(wally_explicit_rangeproof(value, nonce_hash.data(), nonce_hash.size(), vbf.data(), vbf.size(),
+            commitment.data(), commitment.size(), generator.data(), generator.size(), rangeproof.data(),
+            rangeproof.size(), &written));
+        rangeproof.resize(written);
+        return rangeproof;
+    }
+
     size_t asset_surjectionproof_size(size_t num_inputs)
     {
         size_t written;
